@@ -1,0 +1,54 @@
+*** Settings ***
+Library           Selenium2Library
+
+*** Variables ***
+${FirstName}      John
+${LastName}       Kennedy
+${Date}           31.01.1920
+${Username}       Ken
+${Password}       ren234
+${Browser}        Firefox
+${SiteUrl}        http://localhost:8080/
+${Delay}          2s
+
+*** Test Cases ***
+UserInterfaceTest
+    Open Browser to the Start Page
+    sleep    ${Delay}
+    Click Add
+    sleep    ${Delay}
+    Enter First Name
+    sleep    ${Delay}
+    Enter Last Name
+    Enter Date
+    Enter Username
+    Enter Password
+    sleep    ${Delay}
+    Click Save
+    sleep    ${Delay}
+
+*** Keywords ***
+Open Browser to the Start Page
+    open browser    ${SiteUrl}    ${Browser}
+    Maximize Browser Window
+
+Click Add
+    Click Element    id=addBtn
+
+Enter First Name
+    Input Text    id=gwt-uid-3    ${FirstName}
+
+Enter Last Name
+    Input Text    id=gwt-uid-5    ${LastName}
+
+Enter Date
+    Input Text    id=gwt-uid-7    ${Date}
+
+Enter Username
+    Input Text    id=gwt-uid-9    ${Username}
+
+Enter Password
+    Input Text    id=gwt-uid-11    ${Password}
+
+Click Save
+    Click Element    id=saveBtn
